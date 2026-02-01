@@ -23,9 +23,9 @@
 
 ### Implementation for User Story 1
 
-- [ ] T001 [US1] Implement `modelAge(releaseDate)` helper function in `app.js`: parse the YYYY-MM release date string, compute the number of complete years elapsed from the 1st of that month to the current date, and return a string formatted as "{N} yr" (e.g., "5 yr", "0 yr").
-- [ ] T002 [US1] Add "Age" column header to the table in `renderModels()` in `app.js`: insert `<th>Age</th>` after the "Released" header in the `thead` row.
-- [ ] T003 [US1] Add age cell to each model row in `renderModels()` in `app.js`: call `modelAge(m.release_date)` for each model and append the result as a `<td>` after the release date cell.
+- [x] T001 [US1] Implement `modelAge(releaseDate)` helper function in `app.js`: parse the YYYY-MM release date string, compute the number of complete years elapsed from the 1st of that month to the current date, and return a string formatted as "{N} yr" (e.g., "5 yr", "0 yr").
+- [x] T002 [US1] Add "Age" column header to the table in `renderModels()` in `app.js`: insert `<th>Age</th>` after the "Released" header in the `thead` row.
+- [x] T003 [US1] Add age cell to each model row in `renderModels()` in `app.js`: call `modelAge(m.release_date)` for each model and append the result as a `<td>` after the release date cell.
 
 **Checkpoint**: Age column appears in all three view modes (single-version, version-range, dropped-models). Values are correct. JSON download is unchanged (no age field).
 
@@ -33,7 +33,7 @@
 
 ## Phase 2: Validation
 
-- [ ] T004 Run quickstart.md scenarios 1–4 as a final validation pass: (1) age column in single-version mode with correct values, (2) age column in version-range mode, (3) age column in dropped-models mode with older models showing high ages, (4) JSON download contains no age field.
+- [x] T004 Run quickstart.md scenarios 1–4 as a final validation pass: (1) age column in single-version mode with correct values, (2) age column in version-range mode, (3) age column in dropped-models mode with older models showing high ages, (4) JSON download contains no age field.
 
 **Checkpoint**: All 4 quickstart scenarios pass.
 

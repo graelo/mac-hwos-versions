@@ -293,6 +293,7 @@
         "<th>Identifier</th>" +
         "<th>Architecture</th>" +
         "<th>Released</th>" +
+        "<th>Age</th>" +
         "</tr>";
       table.appendChild(thead);
 
@@ -301,11 +302,13 @@
         var tr = document.createElement("tr");
         var archClass = m.cpu_architecture === "arm64" ? "badge-apple-silicon" : "badge-intel";
         var archLabel = m.cpu_architecture === "arm64" ? "Apple Silicon" : "Intel";
+        var age = modelAge(m.release_date);
         tr.innerHTML =
           "<td>" + escapeHtml(m.short_name) + "</td>" +
           "<td><code>" + escapeHtml(m.model_identifier) + "</code></td>" +
           '<td><span class="badge ' + archClass + '">' + archLabel + "</span></td>" +
-          "<td>" + escapeHtml(m.release_date) + "</td>";
+          "<td>" + escapeHtml(m.release_date) + "</td>" +
+          "<td>" + escapeHtml(age) + "</td>";
         tbody.appendChild(tr);
       });
 
@@ -386,6 +389,19 @@
   }
 
   // --- Helpers ---
+  function modelAge(releaseDate) {
+    var parts = releaseDate.split("-");
+    var relYear = parseInt(parts[0], 10);
+    var relMonth = parseInt(parts[1], 10) - 1;
+    var now = new Date();
+    var years = now.getFullYear() - relYear;
+    if (now.getMonth() < relMonth) {
+      years--;
+    }
+    if (years < 0) years = 0;
+    return years + " yr";
+  }
+
   function showError(msg) {
     errorDiv.textContent = msg;
     errorDiv.classList.remove("hidden");
