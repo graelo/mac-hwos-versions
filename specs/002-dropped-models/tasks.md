@@ -25,9 +25,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T001 [US2] Implement `renderSummary(models)` function in `app.js`: count models per `product_line`, omit product lines with zero models (FR-005), and return a DOM element with a compact summary line like "16 MacBook Pro, 8 MacBook Air, 5 iMac — 52 models total" (FR-004). When the models array is empty, return `null` (no summary for empty results).
-- [ ] T002 [US2] Call `renderSummary(models)` from within `renderModels(models)` in `app.js`: insert the summary bar element before the first product-line group. If `renderSummary()` returns `null`, skip insertion.
-- [ ] T003 [P] [US2] Add CSS styling for the summary bar in `style.css`: create `.summary-bar` class with appropriate spacing, font size, color, and a subtle bottom border to visually separate it from the table groups below. Ensure it renders cleanly at both desktop and mobile (375px) viewports.
+- [x] T001 [US2] Implement `renderSummary(models)` function in `app.js`: count models per `product_line`, omit product lines with zero models (FR-005), and return a DOM element with a compact summary line like "16 MacBook Pro, 8 MacBook Air, 5 iMac — 52 models total" (FR-004). When the models array is empty, return `null` (no summary for empty results).
+- [x] T002 [US2] Call `renderSummary(models)` from within `renderModels(models)` in `app.js`: insert the summary bar element before the first product-line group. If `renderSummary()` returns `null`, skip insertion.
+- [x] T003 [P] [US2] Add CSS styling for the summary bar in `style.css`: create `.summary-bar` class with appropriate spacing, font size, color, and a subtle bottom border to visually separate it from the table groups below. Ensure it renders cleanly at both desktop and mobile (375px) viewports.
 
 **Checkpoint**: Summary bar appears above the table in single-version and version-range modes. Counts match table rows. Zero-count product lines are omitted. No summary shown for empty results. (Validates quickstart.md Scenario 4.)
 
@@ -41,16 +41,16 @@
 
 ### Implementation for User Story 1
 
-- [ ] T004 [US1] Add a third mode button "Dropped Models" to the `.mode-toggle` div in `index.html`: insert `<button id="mode-dropped" class="mode-btn">Dropped Models</button>` after the existing "Version Range" button.
-- [ ] T005 [US1] Add dropped-models controls in `index.html`: create a new `<div id="dropped-controls" class="selector-group hidden">` containing a `.range-pair` layout with two selects — `<select id="dropped-old">` labeled "Old Minimum" and `<select id="dropped-new">` labeled "New Minimum". Place it after the existing `#range-controls` div.
-- [ ] T006 [US1] Add DOM references in `app.js` for the new elements: `modeDroppedBtn` (`#mode-dropped`), `droppedControls` (`#dropped-controls`), `droppedOld` (`#dropped-old`), `droppedNew` (`#dropped-new`).
-- [ ] T007 [US1] Wire event listeners in `app.js`: add click listener on `modeDroppedBtn` to call `setMode("dropped")`, add change listeners on `droppedOld` (to repopulate `droppedNew` and trigger load) and `droppedNew` (to trigger load).
-- [ ] T008 [US1] Update `setMode(mode)` in `app.js` to support the `"dropped"` mode: toggle visibility of `#dropped-controls` alongside `#single-controls` and `#range-controls`, update `.active` class on all three mode buttons, and trigger the appropriate load function when entering dropped mode.
-- [ ] T009 [US1] Update `populateSelectors()` in `app.js` to also populate the `droppedOld` select with all versions. After populating, trigger the constrained repopulation of `droppedNew`.
-- [ ] T010 [US1] Implement constrained "New Minimum" selector logic in `app.js` (FR-008): create a function `populateDroppedNew(oldIdx)` that clears and repopulates `#dropped-new` with only versions whose index in `versionIndex` is strictly greater than `oldIdx`. If the previous `droppedNew` selection is still valid (index > oldIdx), preserve it; otherwise default to the first available option. Call this function whenever `droppedOld` changes.
-- [ ] T011 [US1] Implement `loadDroppedModels(oldIdx, newIdx)` in `app.js` (FR-002): fetch both per-version JSON files (`versionIndex[oldIdx].data_file` and `versionIndex[newIdx].data_file`), compute the set difference — models whose `model_identifier` is present in the old version but absent from the new version — sort the result by `product_line` then `release_date`, store in `currentModels`, and call `renderModels()`. Handle fetch errors with `showError()`.
-- [ ] T012 [US1] Update the empty-state message in `renderModels()` in `app.js`: when `currentMode === "dropped"` and no models are found, display "No models dropped." instead of the default "No compatible models found." (per spec acceptance scenario 3).
-- [ ] T013 [US1] Update `onDownload()` in `app.js` (FR-006): add a `"dropped"` branch that generates filename as `{old_version_name}-to-{new_version_name}-dropped-models.json` (lowercased, spaces replaced with dashes) and downloads `currentModels`.
+- [x] T004 [US1] Add a third mode button "Dropped Models" to the `.mode-toggle` div in `index.html`: insert `<button id="mode-dropped" class="mode-btn">Dropped Models</button>` after the existing "Version Range" button.
+- [x] T005 [US1] Add dropped-models controls in `index.html`: create a new `<div id="dropped-controls" class="selector-group hidden">` containing a `.range-pair` layout with two selects — `<select id="dropped-old">` labeled "Old Minimum" and `<select id="dropped-new">` labeled "New Minimum". Place it after the existing `#range-controls` div.
+- [x] T006 [US1] Add DOM references in `app.js` for the new elements: `modeDroppedBtn` (`#mode-dropped`), `droppedControls` (`#dropped-controls`), `droppedOld` (`#dropped-old`), `droppedNew` (`#dropped-new`).
+- [x] T007 [US1] Wire event listeners in `app.js`: add click listener on `modeDroppedBtn` to call `setMode("dropped")`, add change listeners on `droppedOld` (to repopulate `droppedNew` and trigger load) and `droppedNew` (to trigger load).
+- [x] T008 [US1] Update `setMode(mode)` in `app.js` to support the `"dropped"` mode: toggle visibility of `#dropped-controls` alongside `#single-controls` and `#range-controls`, update `.active` class on all three mode buttons, and trigger the appropriate load function when entering dropped mode.
+- [x] T009 [US1] Update `populateSelectors()` in `app.js` to also populate the `droppedOld` select with all versions. After populating, trigger the constrained repopulation of `droppedNew`.
+- [x] T010 [US1] Implement constrained "New Minimum" selector logic in `app.js` (FR-008): create a function `populateDroppedNew(oldIdx)` that clears and repopulates `#dropped-new` with only versions whose index in `versionIndex` is strictly greater than `oldIdx`. If the previous `droppedNew` selection is still valid (index > oldIdx), preserve it; otherwise default to the first available option. Call this function whenever `droppedOld` changes.
+- [x] T011 [US1] Implement `loadDroppedModels(oldIdx, newIdx)` in `app.js` (FR-002): fetch both per-version JSON files (`versionIndex[oldIdx].data_file` and `versionIndex[newIdx].data_file`), compute the set difference — models whose `model_identifier` is present in the old version but absent from the new version — sort the result by `product_line` then `release_date`, store in `currentModels`, and call `renderModels()`. Handle fetch errors with `showError()`.
+- [x] T012 [US1] Update the empty-state message in `renderModels()` in `app.js`: when `currentMode === "dropped"` and no models are found, display "No models dropped." instead of the default "No compatible models found." (per spec acceptance scenario 3).
+- [x] T013 [US1] Update `onDownload()` in `app.js` (FR-006): add a `"dropped"` branch that generates filename as `{old_version_name}-to-{new_version_name}-dropped-models.json` (lowercased, spaces replaced with dashes) and downloads `currentModels`.
 
 **Checkpoint**: "Dropped Models" button works, both selectors appear, "New Minimum" is constrained to versions after "Old Minimum". Big Sur → Monterey shows dropped models with correct summary. "No models dropped." appears for Sequoia → Tahoe. Download produces correct JSON. (Validates quickstart.md Scenarios 1, 2, 3, 5.)
 
@@ -60,8 +60,8 @@
 
 **Purpose**: End-to-end validation across all modes
 
-- [ ] T014 Verify the summary bar displays correctly in dropped-models mode: select Big Sur → Monterey and confirm the summary bar reflects dropped model counts (e.g., "3 MacBook Pro, 2 iMac — 5 models total"). Also verify El Capitan → Tahoe produces a large summary.
-- [ ] T015 Run quickstart.md scenarios 1–5 as a final validation pass: (1) Big Sur → Monterey dropped models with correct summary, (2) Sequoia → Tahoe shows "No models dropped.", (3) El Capitan → Tahoe shows large list, (4) single-version summary counts match table, (5) constrained new-minimum selector. Document any discrepancies and fix them.
+- [x] T014 Verify the summary bar displays correctly in dropped-models mode: select Big Sur → Monterey and confirm the summary bar reflects dropped model counts (e.g., "3 MacBook Pro, 2 iMac — 5 models total"). Also verify El Capitan → Tahoe produces a large summary.
+- [x] T015 Run quickstart.md scenarios 1–5 as a final validation pass: (1) Big Sur → Monterey dropped models with correct summary, (2) Sequoia → Tahoe shows "No models dropped.", (3) El Capitan → Tahoe shows large list, (4) single-version summary counts match table, (5) constrained new-minimum selector. Document any discrepancies and fix them.
 
 **Checkpoint**: All 5 quickstart scenarios pass. Summary bar works in all 3 modes. Download works in all modes.
 

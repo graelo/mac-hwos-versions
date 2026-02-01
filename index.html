@@ -23,6 +23,7 @@
       <div class="mode-toggle">
         <button id="mode-single" class="mode-btn active">Single Version</button>
         <button id="mode-range" class="mode-btn">Version Range</button>
+        <button id="mode-dropped" class="mode-btn">Dropped Models</button>
       </div>
 
       <div id="single-controls" class="selector-group">
@@ -39,6 +40,19 @@
           <div>
             <label for="range-max">To</label>
             <select id="range-max"></select>
+          </div>
+        </div>
+      </div>
+
+      <div id="dropped-controls" class="selector-group hidden">
+        <div class="range-pair">
+          <div>
+            <label for="dropped-old">Old Minimum</label>
+            <select id="dropped-old"></select>
+          </div>
+          <div>
+            <label for="dropped-new">New Minimum</label>
+            <select id="dropped-new"></select>
           </div>
         </div>
       </div>
