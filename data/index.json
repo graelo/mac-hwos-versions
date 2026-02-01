@@ -1,0 +1,79 @@
+[
+  {
+    "version_name": "OS X El Capitan",
+    "version_number": "10.11",
+    "release_date": "2015-09",
+    "source_url": "https://support.apple.com/en-us/111989",
+    "data_file": "macos-10.11-el-capitan.json"
+  },
+  {
+    "version_name": "macOS Sierra",
+    "version_number": "10.12",
+    "release_date": "2016-09",
+    "source_url": "https://support.apple.com/en-us/111988",
+    "data_file": "macos-10.12-sierra.json"
+  },
+  {
+    "version_name": "macOS High Sierra",
+    "version_number": "10.13",
+    "release_date": "2017-09",
+    "source_url": "https://support.apple.com/en-us/111934",
+    "data_file": "macos-10.13-high-sierra.json"
+  },
+  {
+    "version_name": "macOS Mojave",
+    "version_number": "10.14",
+    "release_date": "2018-09",
+    "source_url": "https://support.apple.com/en-us/111930",
+    "data_file": "macos-10.14-mojave.json"
+  },
+  {
+    "version_name": "macOS Catalina",
+    "version_number": "10.15",
+    "release_date": "2019-10",
+    "source_url": "https://support.apple.com/en-us/118458",
+    "data_file": "macos-10.15-catalina.json"
+  },
+  {
+    "version_name": "macOS Big Sur",
+    "version_number": "11",
+    "release_date": "2020-11",
+    "source_url": "https://support.apple.com/en-us/111980",
+    "data_file": "macos-11-big-sur.json"
+  },
+  {
+    "version_name": "macOS Monterey",
+    "version_number": "12",
+    "release_date": "2021-10",
+    "source_url": "https://support.apple.com/en-us/103260",
+    "data_file": "macos-12-monterey.json"
+  },
+  {
+    "version_name": "macOS Ventura",
+    "version_number": "13",
+    "release_date": "2022-10",
+    "source_url": "https://support.apple.com/en-us/102861",
+    "data_file": "macos-13-ventura.json"
+  },
+  {
+    "version_name": "macOS Sonoma",
+    "version_number": "14",
+    "release_date": "2023-09",
+    "source_url": "https://support.apple.com/en-us/105113",
+    "data_file": "macos-14-sonoma.json"
+  },
+  {
+    "version_name": "macOS Sequoia",
+    "version_number": "15",
+    "release_date": "2024-09",
+    "source_url": "https://support.apple.com/en-us/120282",
+    "data_file": "macos-15-sequoia.json"
+  },
+  {
+    "version_name": "macOS Tahoe",
+    "version_number": "26",
+    "release_date": "2025-09",
+    "source_url": "https://support.apple.com/en-us/122867",
+    "data_file": "macos-26-tahoe.json"
+  }
+]
