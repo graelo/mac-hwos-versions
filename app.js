@@ -3,7 +3,7 @@
 
   let versionIndex = [];
   let currentModels = [];
-  let currentMode = "single"; // "single" or "range"
+  let currentMode = "single"; // "single", "range", or "dropped"
 
   // --- DOM refs ---
   const versionSelect = document.getElementById("version-select");
@@ -14,17 +14,24 @@
   const downloadBtn = document.getElementById("download-btn");
   const modeSingleBtn = document.getElementById("mode-single");
   const modeRangeBtn = document.getElementById("mode-range");
+  const modeDroppedBtn = document.getElementById("mode-dropped");
   const singleControls = document.getElementById("single-controls");
   const rangeControls = document.getElementById("range-controls");
+  const droppedControls = document.getElementById("dropped-controls");
+  const droppedOld = document.getElementById("dropped-old");
+  const droppedNew = document.getElementById("dropped-new");
 
   // --- Init ---
   document.addEventListener("DOMContentLoaded", function () {
     loadIndex();
     modeSingleBtn.addEventListener("click", function () { setMode("single"); });
     modeRangeBtn.addEventListener("click", function () { setMode("range"); });
+    modeDroppedBtn.addEventListener("click", function () { setMode("dropped"); });
     versionSelect.addEventListener("change", onSingleChange);
     rangeMin.addEventListener("change", onRangeChange);
     rangeMax.addEventListener("change", onRangeChange);
+    droppedOld.addEventListener("change", onDroppedOldChange);
+    droppedNew.addEventListener("change", onDroppedChange);
     downloadBtn.addEventListener("click", onDownload);
   });
 
@@ -32,12 +39,16 @@
     currentMode = mode;
     modeSingleBtn.classList.toggle("active", mode === "single");
     modeRangeBtn.classList.toggle("active", mode === "range");
+    modeDroppedBtn.classList.toggle("active", mode === "dropped");
     singleControls.classList.toggle("hidden", mode !== "single");
     rangeControls.classList.toggle("hidden", mode !== "range");
+    droppedControls.classList.toggle("hidden", mode !== "dropped");
     if (mode === "single") {
       onSingleChange();
-    } else {
+    } else if (mode === "range") {
       onRangeChange();
+    } else {
+      onDroppedChange();
     }
   }
 
@@ -64,7 +75,7 @@
   }
 
   function populateSelectors() {
-    [versionSelect, rangeMin, rangeMax].forEach(function (sel) {
+    [versionSelect, rangeMin, rangeMax, droppedOld].forEach(function (sel) {
       sel.innerHTML = "";
       versionIndex.forEach(function (v, i) {
         var opt = document.createElement("option");
@@ -73,6 +84,7 @@
         sel.appendChild(opt);
       });
     });
+    populateDroppedNew(0);
   }
 
   function loadVersion(filename) {
@@ -158,12 +170,98 @@
     });
   }
 
+  function populateDroppedNew(oldIdx) {
+    var prevVal = parseInt(droppedNew.value, 10);
+    droppedNew.innerHTML = "";
+    for (var i = oldIdx + 1; i < versionIndex.length; i++) {
+      var opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = versionIndex[i].version_name + " (" + versionIndex[i].version_number + ")";
+      droppedNew.appendChild(opt);
+    }
+    if (prevVal > oldIdx && prevVal < versionIndex.length) {
+      droppedNew.value = prevVal;
+    }
+  }
+
+  function loadDroppedModels(oldIdx, newIdx) {
+    clearError();
+    var oldFile = versionIndex[oldIdx].data_file;
+    var newFile = versionIndex[newIdx].data_file;
+
+    Promise.all([
+      fetch("data/" + oldFile).then(function (r) {
+        if (!r.ok) throw new Error(oldFile);
+        return r.json();
+      }),
+      fetch("data/" + newFile).then(function (r) {
+        if (!r.ok) throw new Error(newFile);
+        return r.json();
+      })
+    ]).then(function (results) {
+      var oldModels = results[0].models || [];
+      var newModels = results[1].models || [];
+
+      // Build set of new version model identifiers
+      var newSet = {};
+      newModels.forEach(function (m) { newSet[m.model_identifier] = true; });
+
+      // Set difference: in old but not in new
+      var dropped = oldModels.filter(function (m) {
+        return !(m.model_identifier in newSet);
+      });
+
+      dropped.sort(function (a, b) {
+        if (a.product_line < b.product_line) return -1;
+        if (a.product_line > b.product_line) return 1;
+        if (a.release_date < b.release_date) return -1;
+        if (a.release_date > b.release_date) return 1;
+        return 0;
+      });
+
+      currentModels = dropped;
+      renderModels(currentModels);
+    }).catch(function (err) {
+      showError("Could not load version data. " + err.message);
+    });
+  }
+
   // --- Rendering ---
+  function renderSummary(models) {
+    if (models.length === 0) return null;
+    var counts = {};
+    var order = [];
+    models.forEach(function (m) {
+      if (!(m.product_line in counts)) {
+        counts[m.product_line] = 0;
+        order.push(m.product_line);
+      }
+      counts[m.product_line]++;
+    });
+    var parts = order.map(function (line) {
+      return counts[line] + " " + line;
+    });
+    var text = parts.join(", ") + " \u2014 " + models.length + " models total";
+    var bar = document.createElement("div");
+    bar.className = "summary-bar";
+    bar.textContent = text;
+    return bar;
+  }
+
   function renderModels(models) {
     resultsDiv.innerHTML = "";
     if (models.length === 0) {
-      resultsDiv.innerHTML = '<div class="empty-state">No compatible models found.</div>';
+      var emptyMsg = currentMode === "dropped"
+        ? "No models dropped."
+        : "No compatible models found.";
+      resultsDiv.innerHTML = '<div class="empty-state">' + escapeHtml(emptyMsg) + '</div>';
       return;
+    }
+
+    // Summary bar
+    var summaryEl = renderSummary(models);
+    if (summaryEl) {
+      resultsDiv.appendChild(summaryEl);
     }
 
     // Group by product_line
@@ -233,6 +331,22 @@
     }
   }
 
+  function onDroppedOldChange() {
+    var oldIdx = parseInt(droppedOld.value, 10);
+    if (!isNaN(oldIdx)) {
+      populateDroppedNew(oldIdx);
+      onDroppedChange();
+    }
+  }
+
+  function onDroppedChange() {
+    var oldIdx = parseInt(droppedOld.value, 10);
+    var newIdx = parseInt(droppedNew.value, 10);
+    if (!isNaN(oldIdx) && !isNaN(newIdx)) {
+      loadDroppedModels(oldIdx, newIdx);
+    }
+  }
+
   function onDownload() {
     if (currentModels.length === 0) return;
     var filename;
@@ -240,13 +354,20 @@
       var idx = parseInt(versionSelect.value, 10);
       var v = versionIndex[idx];
       filename = v.version_name.replace(/\s+/g, "-").toLowerCase() + "-compatible-models.json";
-    } else {
+    } else if (currentMode === "range") {
       var minV = versionIndex[parseInt(rangeMin.value, 10)];
       var maxV = versionIndex[parseInt(rangeMax.value, 10)];
       filename = minV.version_name.replace(/\s+/g, "-").toLowerCase() +
         "-to-" +
         maxV.version_name.replace(/\s+/g, "-").toLowerCase() +
         "-compatible-models.json";
+    } else {
+      var oldV = versionIndex[parseInt(droppedOld.value, 10)];
+      var newV = versionIndex[parseInt(droppedNew.value, 10)];
+      filename = oldV.version_name.replace(/\s+/g, "-").toLowerCase() +
+        "-to-" +
+        newV.version_name.replace(/\s+/g, "-").toLowerCase() +
+        "-dropped-models.json";
     }
     downloadJSON(currentModels, filename);
   }

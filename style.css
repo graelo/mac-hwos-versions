@@ -157,6 +157,15 @@ main {
   background: #0077ed;
 }
 
+/* Summary bar */
+.summary-bar {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  color: #1d1d1f;
+  border-bottom: 1px solid #d2d2d7;
+}
+
 /* Results table */
 .product-line-group {
   margin-bottom: 2rem;
