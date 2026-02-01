@@ -1,0 +1,372 @@
+{
+  "version_name": "macOS Sonoma",
+  "version_number": "14",
+  "release_date": "2023-09",
+  "source_url": "https://support.apple.com/en-us/105113",
+  "models": [
+    {
+      "model_identifier": "iMac19,1",
+      "short_name": "iMac (Retina 5K, 27-inch, 2019)",
+      "product_line": "iMac",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-03"
+    },
+    {
+      "model_identifier": "iMac19,2",
+      "short_name": "iMac (Retina 4K, 21.5-inch, 2019)",
+      "product_line": "iMac",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-03"
+    },
+    {
+      "model_identifier": "iMac20,1",
+      "short_name": "iMac (Retina 5K, 27-inch, 2020)",
+      "product_line": "iMac",
+      "cpu_architecture": "x86-64",
+      "release_date": "2020-08"
+    },
+    {
+      "model_identifier": "iMac20,2",
+      "short_name": "iMac (Retina 5K, 27-inch, 2020)",
+      "product_line": "iMac",
+      "cpu_architecture": "x86-64",
+      "release_date": "2020-08"
+    },
+    {
+      "model_identifier": "iMac21,1",
+      "short_name": "iMac (24-inch, M1, 2021)",
+      "product_line": "iMac",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-05"
+    },
+    {
+      "model_identifier": "iMac21,2",
+      "short_name": "iMac (24-inch, M1, 2021)",
+      "product_line": "iMac",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-05"
+    },
+    {
+      "model_identifier": "Mac15,4",
+      "short_name": "iMac (24-inch, 2023)",
+      "product_line": "iMac",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,5",
+      "short_name": "iMac (24-inch, 2023)",
+      "product_line": "iMac",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "iMacPro1,1",
+      "short_name": "iMac Pro (2017)",
+      "product_line": "iMac Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2017-12"
+    },
+    {
+      "model_identifier": "Mac13,1",
+      "short_name": "Mac Studio (2022)",
+      "product_line": "Mac Studio",
+      "cpu_architecture": "arm64",
+      "release_date": "2022-03"
+    },
+    {
+      "model_identifier": "Mac13,2",
+      "short_name": "Mac Studio (2022)",
+      "product_line": "Mac Studio",
+      "cpu_architecture": "arm64",
+      "release_date": "2022-03"
+    },
+    {
+      "model_identifier": "Mac14,13",
+      "short_name": "Mac Studio (2023)",
+      "product_line": "Mac Studio",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-06"
+    },
+    {
+      "model_identifier": "Mac14,14",
+      "short_name": "Mac Studio (2023)",
+      "product_line": "Mac Studio",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-06"
+    },
+    {
+      "model_identifier": "Macmini8,1",
+      "short_name": "Mac mini (2018)",
+      "product_line": "Mac mini",
+      "cpu_architecture": "x86-64",
+      "release_date": "2018-10"
+    },
+    {
+      "model_identifier": "Macmini9,1",
+      "short_name": "Mac mini (M1, 2020)",
+      "product_line": "Mac mini",
+      "cpu_architecture": "arm64",
+      "release_date": "2020-11"
+    },
+    {
+      "model_identifier": "Mac14,3",
+      "short_name": "Mac mini (2023)",
+      "product_line": "Mac mini",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "Mac14,12",
+      "short_name": "Mac mini (2023)",
+      "product_line": "Mac mini",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "MacPro7,1",
+      "short_name": "Mac Pro (2019)",
+      "product_line": "Mac Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-12"
+    },
+    {
+      "model_identifier": "Mac14,8",
+      "short_name": "Mac Pro (2023)",
+      "product_line": "Mac Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-06"
+    },
+    {
+      "model_identifier": "MacBookAir8,1",
+      "short_name": "MacBook Air (Retina, 13-inch, 2018)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "x86-64",
+      "release_date": "2018-10"
+    },
+    {
+      "model_identifier": "MacBookAir8,2",
+      "short_name": "MacBook Air (Retina, 13-inch, 2019)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-07"
+    },
+    {
+      "model_identifier": "MacBookAir9,1",
+      "short_name": "MacBook Air (Retina, 13-inch, 2020)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "x86-64",
+      "release_date": "2020-03"
+    },
+    {
+      "model_identifier": "MacBookAir10,1",
+      "short_name": "MacBook Air (M1, 2020)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "arm64",
+      "release_date": "2020-11"
+    },
+    {
+      "model_identifier": "Mac14,2",
+      "short_name": "MacBook Air (M2, 2022)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "arm64",
+      "release_date": "2022-07"
+    },
+    {
+      "model_identifier": "Mac14,15",
+      "short_name": "MacBook Air (15-inch, M2, 2023)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-06"
+    },
+    {
+      "model_identifier": "Mac15,12",
+      "short_name": "MacBook Air (13-inch, M3, 2024)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "arm64",
+      "release_date": "2024-03"
+    },
+    {
+      "model_identifier": "Mac15,13",
+      "short_name": "MacBook Air (15-inch, M3, 2024)",
+      "product_line": "MacBook Air",
+      "cpu_architecture": "arm64",
+      "release_date": "2024-03"
+    },
+    {
+      "model_identifier": "MacBookPro15,1",
+      "short_name": "MacBook Pro (15-inch, 2018)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2018-07"
+    },
+    {
+      "model_identifier": "MacBookPro15,2",
+      "short_name": "MacBook Pro (13-inch, 2018, Four Thunderbolt 3 ports)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2018-07"
+    },
+    {
+      "model_identifier": "MacBookPro15,3",
+      "short_name": "MacBook Pro (15-inch, 2019)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-05"
+    },
+    {
+      "model_identifier": "MacBookPro15,4",
+      "short_name": "MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-07"
+    },
+    {
+      "model_identifier": "MacBookPro16,1",
+      "short_name": "MacBook Pro (16-inch, 2019)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-11"
+    },
+    {
+      "model_identifier": "MacBookPro16,2",
+      "short_name": "MacBook Pro (13-inch, 2020, Four Thunderbolt 3 ports)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2020-05"
+    },
+    {
+      "model_identifier": "MacBookPro16,3",
+      "short_name": "MacBook Pro (13-inch, 2020, Two Thunderbolt 3 ports)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2020-05"
+    },
+    {
+      "model_identifier": "MacBookPro16,4",
+      "short_name": "MacBook Pro (16-inch, 2019)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "x86-64",
+      "release_date": "2019-11"
+    },
+    {
+      "model_identifier": "MacBookPro17,1",
+      "short_name": "MacBook Pro (13-inch, M1, 2020)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2020-11"
+    },
+    {
+      "model_identifier": "MacBookPro18,1",
+      "short_name": "MacBook Pro (16-inch, 2021)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-10"
+    },
+    {
+      "model_identifier": "MacBookPro18,2",
+      "short_name": "MacBook Pro (16-inch, 2021)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-10"
+    },
+    {
+      "model_identifier": "MacBookPro18,3",
+      "short_name": "MacBook Pro (14-inch, 2021)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-10"
+    },
+    {
+      "model_identifier": "MacBookPro18,4",
+      "short_name": "MacBook Pro (14-inch, 2021)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2021-10"
+    },
+    {
+      "model_identifier": "Mac14,5",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "Mac14,6",
+      "short_name": "MacBook Pro (16-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "Mac14,7",
+      "short_name": "MacBook Pro (13-inch, M2, 2022)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2022-06"
+    },
+    {
+      "model_identifier": "Mac14,9",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "Mac14,10",
+      "short_name": "MacBook Pro (16-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-01"
+    },
+    {
+      "model_identifier": "Mac15,3",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,6",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,7",
+      "short_name": "MacBook Pro (16-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,8",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,9",
+      "short_name": "MacBook Pro (16-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,10",
+      "short_name": "MacBook Pro (14-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    },
+    {
+      "model_identifier": "Mac15,11",
+      "short_name": "MacBook Pro (16-inch, 2023)",
+      "product_line": "MacBook Pro",
+      "cpu_architecture": "arm64",
+      "release_date": "2023-11"
+    }
+  ]
+}

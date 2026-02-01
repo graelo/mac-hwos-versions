@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac Hardware / macOS Compatibility</title>
+  <meta name="description" content="Which Mac runs which macOS? A browsable, programmable reference backed by Apple's official support pages.">
+  <meta property="og:title" content="Mac Hardware / macOS Compatibility">
+  <meta property="og:description" content="Browse which Mac models are supported by each macOS version. Data from official Apple support pages.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F4BB;</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Mac Hardware / macOS Compatibility</h1>
+    <p class="subtitle">Which Mac runs which macOS? Data from <a href="https://support.apple.com/" rel="noopener">Apple Support</a>.</p>
+  </header>
+
+  <main>
+
+    <div class="controls">
+      <div class="mode-toggle">
+        <button id="mode-single" class="mode-btn active">Single Version</button>
+        <button id="mode-range" class="mode-btn">Version Range</button>
+      </div>
+
+      <div id="single-controls" class="selector-group">
+        <label for="version-select">macOS Version</label>
+        <select id="version-select"></select>
+      </div>
+
+      <div id="range-controls" class="selector-group hidden">
+        <div class="range-pair">
+          <div>
+            <label for="range-min">From</label>
+            <select id="range-min"></select>
+          </div>
+          <div>
+            <label for="range-max">To</label>
+            <select id="range-max"></select>
+          </div>
+        </div>
+      </div>
+
+      <button id="download-btn" class="download-btn">Download as JSON</button>
+    </div>
+
+    <div id="results"></div>
+    <div id="error" class="error hidden"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data sourced from <a href="https://support.apple.com/" rel="noopener">Apple Support</a> pages.
+    <a href="https://github.com/graelo/mac-hwos-versions">GitHub</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
