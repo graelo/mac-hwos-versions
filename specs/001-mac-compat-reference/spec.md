@@ -184,8 +184,8 @@ site.
   `macos-15-sequoia.json`) plus an index file that lists all
   available versions. No server-side processing required.
 - **FR-009**: The site MUST be deployable as a static GitHub Pages
-  site with no build step beyond what GitHub Pages provides
-  natively (or a simple static site generator).
+  site with no build step. GitHub Pages serves the repository root
+  directly.
 - **FR-010**: Adding a new macOS version MUST require only adding or
   updating JSON data files and committing to the repository.
 - **FR-011**: The data extraction process from Apple support pages
@@ -263,5 +263,5 @@ site.
   editing only JSON data files — no code changes.
 - **SC-005**: The site loads and renders fully from static files
   with no server-side processing.
-- **SC-006**: The full dataset is available as a single downloadable
-  JSON file at a stable, documented URL.
+- **SC-006**: Each per-version dataset and the version index are
+  available as downloadable JSON files at stable, documented URLs.

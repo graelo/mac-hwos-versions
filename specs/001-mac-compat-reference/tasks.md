@@ -19,11 +19,11 @@
 
 **Purpose**: Project directory structure and initial configuration
 
-- [ ] T001 Create directory structure: `data/`, `site/`, `docs/` at repository root
+- [ ] T001 Create directory structure: `data/`, `docs/` at repository root
 - [ ] T002 [P] Create `data/index.json` with all 11 macOS versions (10.11 El Capitan through 26 Tahoe) per the data-model schema. Include version_name, version_number, release_date, source_url, and data_file for each entry. Sorted by version_number ascending. Reference research.md R0 for source URLs.
-- [ ] T003 [P] Create `site/index.html` with basic HTML5 structure: page title "Mac Hardware / macOS Compatibility", a `<select>` element for version selection (empty, populated by JS), a results container `<div>`, and script/style tags linking to `app.js` and `style.css`
-- [ ] T004 [P] Create `site/style.css` with minimal, clean styling: responsive table layout, product-line grouping headers, architecture badges (Intel/Apple Silicon), and a download button style
-- [ ] T005 [P] Create `site/app.js` as an empty module with placeholder functions: `loadIndex()`, `loadVersion(filename)`, `renderModels(models)`, `downloadJSON(data, filename)`. Wire `loadIndex()` to run on `DOMContentLoaded`.
+- [ ] T003 [P] Create `index.html` with basic HTML5 structure: page title "Mac Hardware / macOS Compatibility", a `<select>` element for version selection (empty, populated by JS), a results container `<div>`, and script/style tags linking to `app.js` and `style.css`
+- [ ] T004 [P] Create `style.css` with minimal, clean styling: responsive table layout, product-line grouping headers, architecture badges (Intel/Apple Silicon), and a download button style
+- [ ] T005 [P] Create `app.js` as an empty module with placeholder functions: `loadIndex()`, `loadVersion(filename)`, `renderModels(models)`, `downloadJSON(data, filename)`. Wire `loadIndex()` to run on `DOMContentLoaded`.
 
 **Checkpoint**: Directory structure exists, index.json is populated, site shell loads in a browser (empty table).
 
@@ -62,14 +62,14 @@
 
 ### Implementation for User Story 1
 
-- [ ] T020 [US1] Implement `loadIndex()` in `site/app.js`: fetch `data/index.json`, populate the version `<select>` dropdown with version names sorted oldest-to-newest, select the most recent version by default, and trigger `loadVersion()` for the default selection.
-- [ ] T021 [US1] Implement `loadVersion(filename)` in `site/app.js`: fetch the per-version JSON file from `data/{filename}`, store the result, and call `renderModels()` with the models array.
-- [ ] T022 [US1] Implement `renderModels(models)` in `site/app.js`: group models by `product_line`, render a table with columns: Short Name, Model Identifier, CPU Architecture, Release Date. Show product-line headers as group separators. Display architecture as a visual badge ("Intel" for x86-64, "Apple Silicon" for arm64).
-- [ ] T023 [US1] Wire the version `<select>` change event in `site/app.js`: on selection change, call `loadVersion()` with the selected version's `data_file`.
-- [ ] T024 [US1] Implement `downloadJSON(data, filename)` in `site/app.js`: serialize the currently displayed models array as JSON, create a Blob, trigger a browser download with filename `{version_name}-compatible-models.json`.
-- [ ] T025 [US1] Add a "Download as JSON" button in `site/index.html` and wire it in `site/app.js` to call `downloadJSON()` with the current single-version model list.
-- [ ] T026 [US1] Style the results table and download button in `site/style.css`: responsive table, alternating row colors, sticky header, product-line group headings, architecture badge colors (blue for Intel, green for Apple Silicon), prominent download button.
-- [ ] T027 [US1] Handle error states in `site/app.js`: show a clear message if `index.json` fails to load (network error), or if a per-version file is missing/malformed. Do not show a blank page.
+- [ ] T020 [US1] Implement `loadIndex()` in `app.js`: fetch `data/index.json`, populate the version `<select>` dropdown with version names sorted oldest-to-newest, select the most recent version by default, and trigger `loadVersion()` for the default selection.
+- [ ] T021 [US1] Implement `loadVersion(filename)` in `app.js`: fetch the per-version JSON file from `data/{filename}`, store the result, and call `renderModels()` with the models array.
+- [ ] T022 [US1] Implement `renderModels(models)` in `app.js`: group models by `product_line`, render a table with columns: Short Name, Model Identifier, CPU Architecture, Release Date. Show product-line headers as group separators. Display architecture as a visual badge ("Intel" for x86-64, "Apple Silicon" for arm64).
+- [ ] T023 [US1] Wire the version `<select>` change event in `app.js`: on selection change, call `loadVersion()` with the selected version's `data_file`.
+- [ ] T024 [US1] Implement `downloadJSON(data, filename)` in `app.js`: serialize the currently displayed models array as JSON, create a Blob, trigger a browser download with filename `{version_name}-compatible-models.json`.
+- [ ] T025 [US1] Add a "Download as JSON" button in `index.html` and wire it in `app.js` to call `downloadJSON()` with the current single-version model list.
+- [ ] T026 [US1] Style the results table and download button in `style.css`: responsive table, alternating row colors, sticky header, product-line group headings, architecture badge colors (blue for Intel, green for Apple Silicon), prominent download button.
+- [ ] T027 [US1] Handle error states in `app.js`: show a clear message if `index.json` fails to load (network error), or if a per-version file is missing/malformed. Do not show a blank page.
 
 **Checkpoint**: The site loads, the dropdown lists all 11 macOS versions, selecting a version displays the correct model table grouped by product line, and the "Download as JSON" button works. User Story 1 is fully functional.
 
@@ -83,12 +83,12 @@
 
 ### Implementation for User Story 2
 
-- [ ] T028 [US2] Add min/max version range selectors to `site/index.html`: two `<select>` dropdowns ("From" and "To") alongside the existing single-version selector. Add a toggle or tab to switch between single-version and range mode.
-- [ ] T029 [US2] Implement `loadVersionRange(minFile, maxFile)` in `site/app.js`: determine all version files between min and max (inclusive) using index.json ordering, fetch all per-version files in the range, compute the intersection of model lists by `model_identifier` (models present in ALL versions), and call `renderModels()` with the intersection result.
-- [ ] T030 [US2] Wire the range selector change events in `site/app.js`: when either min or max changes, call `loadVersionRange()`. Validate that min <= max; if not, swap them or show a warning.
-- [ ] T031 [US2] Update `downloadJSON()` call in `site/app.js` for range mode: when in range mode, the download file should be named `{min_version}-to-{max_version}-compatible-models.json` and contain only the intersected model list.
-- [ ] T032 [US2] Handle the edge case in `site/app.js` where the version range intersection is empty: display a "No compatible models found across all selected versions" message instead of an empty table.
-- [ ] T033 [US2] Style the range selectors and mode toggle in `site/style.css`: align the two dropdowns side by side, add visual indication of which mode is active (single vs. range).
+- [ ] T028 [US2] Add min/max version range selectors to `index.html`: two `<select>` dropdowns ("From" and "To") alongside the existing single-version selector. Add a toggle or tab to switch between single-version and range mode.
+- [ ] T029 [US2] Implement `loadVersionRange(minFile, maxFile)` in `app.js`: determine all version files between min and max (inclusive) using index.json ordering, fetch all per-version files in the range, compute the intersection of model lists by `model_identifier` (models present in ALL versions), and call `renderModels()` with the intersection result. If any individual file in the range fails to load, display an error identifying the failing version rather than silently omitting it or showing a blank result.
+- [ ] T030 [US2] Wire the range selector change events in `app.js`: when either min or max changes, call `loadVersionRange()`. Validate that min <= max; if not, swap them or show a warning.
+- [ ] T031 [US2] Update `downloadJSON()` call in `app.js` for range mode: when in range mode, the download file should be named `{min_version}-to-{max_version}-compatible-models.json` and contain only the intersected model list.
+- [ ] T032 [US2] Handle the edge case in `app.js` where the version range intersection is empty: display a "No compatible models found across all selected versions" message instead of an empty table.
+- [ ] T033 [US2] Style the range selectors and mode toggle in `style.css`: align the two dropdowns side by side, add visual indication of which mode is active (single vs. range).
 
 **Checkpoint**: The site supports both single-version and range filtering. Range selection shows only models in the intersection. Download works for both modes. Empty results show a clear message.
 
@@ -102,7 +102,7 @@
 
 ### Implementation for User Story 3
 
-- [ ] T034 [US3] Configure GitHub Pages deployment in repository settings or via a GitHub Actions workflow file (`.github/workflows/deploy.yml`) if needed. Ensure the `data/` directory is served at the root alongside `site/`. Verify that `https://<user>.github.io/mac-hwos-versions/data/index.json` returns valid JSON with correct `Content-Type`.
+- [ ] T034 [US3] Configure GitHub Pages deployment from the root of the main branch. Since `index.html`, `app.js`, `style.css`, and `data/` all live at the repo root, no path remapping is needed. Verify that `https://<user>.github.io/mac-hwos-versions/` loads the site and `https://<user>.github.io/mac-hwos-versions/data/index.json` returns valid JSON with correct `Content-Type`.
 - [ ] T035 [US3] Add CORS verification: after deployment, confirm that `fetch()` from a different origin successfully retrieves JSON files. Document the base URL pattern in the project README.
 - [ ] T036 [US3] Write a `README.md` at the repository root with: project description, link to the live site, programmatic access documentation (base URL, index endpoint, per-version file URL pattern, curl examples from contracts/static-file-api.md), JSON schema summary, and contribution/maintenance instructions.
 
@@ -130,9 +130,9 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T040 [P] Add a site header/footer in `site/index.html` with: project title, link to GitHub repository, "Data sourced from Apple Support" attribution with links to source pages, and last-updated date.
-- [ ] T041 [P] Add a favicon and meta tags in `site/index.html`: `<meta>` description, Open Graph tags for social sharing, and a simple favicon.
-- [ ] T042 Verify responsive layout in `site/style.css`: test the site on mobile viewport widths (375px, 768px), ensure the table scrolls horizontally or stacks gracefully, and the version selectors remain usable.
+- [ ] T040 [P] Add a site header/footer in `index.html` with: project title, link to GitHub repository, "Data sourced from Apple Support" attribution with links to source pages, and last-updated date.
+- [ ] T041 [P] Add a favicon and meta tags in `index.html`: `<meta>` description, Open Graph tags for social sharing, and a simple favicon.
+- [ ] T042 Verify responsive layout in `style.css`: test the site on mobile viewport widths (375px, 768px), ensure the table scrolls horizontally or stacks gracefully, and the version selectors remain usable.
 - [ ] T043 Run quickstart.md scenarios 1–5 as a final validation pass. Document any discrepancies and fix them.
 
 ---

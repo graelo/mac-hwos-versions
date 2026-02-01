@@ -79,19 +79,20 @@ data/
 ├── macos-15-sequoia.json
 └── macos-26-tahoe.json
 
-site/
-├── index.html                  # Single-page static site
-├── style.css                   # Styling
-└── app.js                      # Client-side logic (vanilla JS)
+index.html                      # Single-page static site (repo root)
+style.css                       # Styling (repo root)
+app.js                          # Client-side logic (repo root)
 
 docs/
 └── extraction-guide.md         # LLM prompt + workflow for data updates
 ```
 
 **Structure Decision**: Single static site. No build step. The
-`data/` directory contains the authoritative JSON files. The `site/`
-directory contains the HTML/CSS/JS for the browsing UI. Both are
-served directly by GitHub Pages from the repository root.
+`data/` directory contains the authoritative JSON files. The
+HTML/CSS/JS files live at the repository root so GitHub Pages
+serves them directly without path prefix issues (no `/site/`
+in the URL). GitHub Pages is configured to deploy from the
+root of the main branch.
 
 ## Key Design Decisions
 
@@ -113,8 +114,9 @@ files. The UI loads multiple per-version files and intersects by
 
 ### No Build Step
 
-The site is pure HTML/CSS/JS. GitHub Pages serves the files as-is.
-No static site generator, no bundler, no package.json.
+The site is pure HTML/CSS/JS at the repository root. GitHub Pages
+serves the files as-is. No static site generator, no bundler, no
+package.json.
 
 ### Data Extraction Workflow
 
